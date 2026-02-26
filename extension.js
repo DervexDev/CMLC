@@ -1,5 +1,7 @@
 const vscode = require("vscode")
 
+const MAX_LENGTH = 72
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -15,17 +17,15 @@ function activate(context) {
       }
 
       const length = repositories[0].inputBox.value.length
-      const diff = 72 - length
-      let message = "(no chars left)"
+      const diff = MAX_LENGTH - length
+      const absolute = Math.abs(diff)
 
-      if (diff > 0) {
-        message = `(${diff} chars left)`
-      } else if (diff < 0) {
-        message = `(${diff * -1} chars too long)`
-      }
+      let message = diff == 0 ? "no" : String(absolute)
+      message += absolute == 1 ? " char" : " chars"
+      message += diff < 0 ? " too long" : " left"
 
       vscode.window.showInformationMessage(
-        `Commit message length: ${length} ${message}`
+        `Commit message length: ${length} (${message})`
       )
     })
   )

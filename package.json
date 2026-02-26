@@ -4,7 +4,7 @@
   "publisher": "Dervex",
   "description": "GitHub longest fully displayed Commit Message Length Counter",
   "license": "Apache-2.0",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icon": "images/logo.png",
   "engines": {
     "vscode": "^1.93.0"
@@ -25,12 +25,13 @@
     "counter"
   ],
   "main": "./extension.js",
+  "activationEvents": [],
   "contributes": {
     "commands": [
       {
         "command": "cmlc.count",
         "icon": "$(comment)",
-        "title": "Hello World"
+        "title": "Message Length"
       }
     ],
     "menus": {
